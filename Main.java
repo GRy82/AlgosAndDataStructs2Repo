@@ -1,11 +1,12 @@
 
 public class Main{
+    public static BinaryTree binaryTree = new BinaryTree();
     public static void main(String[] args) {
         testBinaryTreeInsert();
+        testBinaryTreeFind();
     }
 
     public static void testBinaryTreeInsert(){
-        BinaryTree binaryTree = new BinaryTree();
         binaryTree.insert(7);
         binaryTree.insert(4);
         binaryTree.insert(9);
@@ -14,5 +15,12 @@ public class Main{
         binaryTree.insert(8);
         binaryTree.insert(8);
         System.out.println("Pause Debugger here.");
+    }
+
+    public static void testBinaryTreeFind(){
+        System.out.println(binaryTree.Find(8));
+        System.out.println(binaryTree.Find(1));
+        System.out.println(binaryTree.Find(7));
+        System.out.println(binaryTree.Find(5));
     }
 }

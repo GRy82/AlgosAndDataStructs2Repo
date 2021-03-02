@@ -39,19 +39,15 @@ public class BinaryTree{
     }
 
     public boolean Find(int value){
-        Node current;
-        current = root;
+        Node current = root;
         
         if(current == null) return false;
 
         while(current.value != value){    
-            if (value > current.value){
+            if (value > current.value)
                 current = current.rightChild;
-            }
-            else{
+            else
                 current = current.leftChild;
-            }
-
             if(current == null) return false;
         }
 
