@@ -53,4 +53,17 @@ public class BinaryTree{
 
         return true;
     }
+
+
+    public void traversePreOrder(){
+        traversePreOrder(root);
+    }
+
+    private void traversePreOrder(Node relativeRoot){
+        if (relativeRoot == null) return;
+
+        System.out.println(relativeRoot.value);
+        traversePreOrder(relativeRoot.leftChild);
+        traversePreOrder(relativeRoot.rightChild);
+    }
 }

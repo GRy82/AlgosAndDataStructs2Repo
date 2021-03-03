@@ -3,7 +3,8 @@ public class Main{
     public static BinaryTree binaryTree = new BinaryTree();
     public static void main(String[] args) {
         testBinaryTreeInsert();
-        testBinaryTreeFind();
+        //testBinaryTreeFind();
+        binaryTree.traversePreOrder();
     }
 
     public static void testBinaryTreeInsert(){
@@ -14,7 +15,6 @@ public class Main{
         binaryTree.insert(6);
         binaryTree.insert(8);
         binaryTree.insert(8);
-        System.out.println("Pause Debugger here.");
     }
 
     public static void testBinaryTreeFind(){
