@@ -5,7 +5,8 @@ public class Main{
         testBinaryTreeInsert();
         //testBinaryTreeFind();
         //binaryTree.traversePreOrder();
-        binaryTree.traverseInOrder();
+        //binaryTree.traverseInOrder();
+        binaryTree.traversePostOrder();
     }
 
     public static void testBinaryTreeInsert(){
