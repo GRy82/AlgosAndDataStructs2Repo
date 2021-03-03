@@ -6,7 +6,8 @@ public class Main{
         //testBinaryTreeFind();
         //binaryTree.traversePreOrder();
         //binaryTree.traverseInOrder();
-        binaryTree.traversePostOrder();
+        //binaryTree.traversePostOrder();
+        System.out.println(binaryTree.height());
     }
 
     public static void testBinaryTreeInsert(){
@@ -16,7 +17,7 @@ public class Main{
         binaryTree.insert(1);
         binaryTree.insert(6);
         binaryTree.insert(8);
-        binaryTree.insert(8);
+        binaryTree.insert(10);
     }
 
     public static void testBinaryTreeFind(){

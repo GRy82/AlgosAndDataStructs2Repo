@@ -103,4 +103,20 @@ public class BinaryTree{
     }
 
     //-------------------------------------------------
+
+    public int height(){
+        return height(root);
+    }
+
+    private int height(Node relativeRoot){
+        if (relativeRoot == null)
+            return -1;
+
+        if (relativeRoot.leftChild == null && relativeRoot.rightChild == null)
+            return 0;
+             
+        return 1 + Math.max(
+            height(relativeRoot.leftChild), 
+            height(relativeRoot.rightChild));
+    }
 }
