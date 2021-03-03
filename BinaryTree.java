@@ -66,4 +66,20 @@ public class BinaryTree{
         traversePreOrder(relativeRoot.leftChild);
         traversePreOrder(relativeRoot.rightChild);
     }
+
+    public void traverseInOrder(){
+        traverseInOrder(root);
+    }
+
+    private void traverseInOrder(Node relativeRoot){
+        if (relativeRoot.leftChild != null){
+            traverseInOrder(relativeRoot.leftChild);
+        }
+        
+        System.out.println(relativeRoot.value);
+
+        if(relativeRoot.rightChild != null)
+            traverseInOrder(relativeRoot.rightChild);
+        else return;
+    }
 }

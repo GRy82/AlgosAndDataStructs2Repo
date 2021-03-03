@@ -4,7 +4,8 @@ public class Main{
     public static void main(String[] args) {
         testBinaryTreeInsert();
         //testBinaryTreeFind();
-        binaryTree.traversePreOrder();
+        //binaryTree.traversePreOrder();
+        binaryTree.traverseInOrder();
     }
 
     public static void testBinaryTreeInsert(){
