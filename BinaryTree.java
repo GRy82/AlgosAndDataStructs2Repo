@@ -119,4 +119,27 @@ public class BinaryTree{
             height(relativeRoot.leftChild), 
             height(relativeRoot.rightChild));
     }
+
+    //---------------------------------------------
+
+    public boolean equals(BinaryTree tree){
+        if (tree == null)
+            return false;
+
+        return equals(root, tree.root);
+    }
+
+    private boolean equals(Node root, Node treeRoot){
+        if(root == null && treeRoot == null)
+            return true;
+
+        if(root != null && treeRoot != null)
+            return root.value == treeRoot.value 
+                    && equals(root.leftChild, treeRoot.leftChild)
+                    && equals(root.rightChild, treeRoot.rightChild);
+        
+
+        return false;
+        
+    }
 }
