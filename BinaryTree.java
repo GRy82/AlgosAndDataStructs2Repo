@@ -139,7 +139,23 @@ public class BinaryTree{
                     && equals(root.rightChild, treeRoot.rightChild);
         
 
-        return false;
+        return false;   
+    }
+
+    //---------------------------------------------
+
+    public boolean validateBinarySearchTree(){
+        return validateBinarySearchTree(Integer.MIN_VALUE, Integer.MAX_VALUE, root);
+    }
+
+    private boolean validateBinarySearchTree(int min, int max, Node node){
+        if (node == null) 
+            return true;
+
+        if (node.value > max || node.value < min)
+            return false;
         
+        return validateBinarySearchTree(min, node.value - 1, node.leftChild)
+            && validateBinarySearchTree(node.value + 1, max, node.rightChild);
     }
 }

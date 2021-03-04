@@ -10,7 +10,8 @@ public class Main{
         //binaryTree.traverseInOrder();
         //binaryTree.traversePostOrder();
         //System.out.println(binaryTree.height());
-        System.out.println(binaryTree.equals(binaryTwo));
+        //System.out.println(binaryTree.equals(binaryTwo));
+        System.out.println(binaryTree.validateBinarySearchTree());
     }
 
     public static void testBinaryTreeInsert(){
