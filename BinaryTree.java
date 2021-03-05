@@ -197,4 +197,17 @@ public class BinaryTree {
         getListKFromRoot(root.leftChild, k - 1, list);
         getListKFromRoot(root.rightChild, k - 1, list); 
     }
+
+    //---------------------------------------------------
+
+    public void traverseLevelOrder(){
+        for(var i = 0; i <= height(); i++){
+            for(var value : getListKFromRoot(i))
+                System.out.println(value);
+        }
+    }
+
+    //----------------Extra Exercises---------------------
+
+    
 }
