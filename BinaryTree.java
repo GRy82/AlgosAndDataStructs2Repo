@@ -254,8 +254,6 @@ public class BinaryTree {
      }
 
      public boolean contains(int value){
-        if (root == null) throw new IllegalStateException();
-
         return contains(root, value);
      }
 
@@ -266,5 +264,26 @@ public class BinaryTree {
         
         return contains(root.leftChild, value)
             || contains(root.rightChild,value);
+     }
+
+     public boolean areSiblings(int valueOne, int valueTwo){
+        if(valueOne == valueTwo) throw new IllegalArgumentException();
+
+        return areSiblings(root, valueOne, valueTwo);
+     }
+
+     private boolean areSiblings(Node root, int valueOne, int valueTwo){
+        if (root == null) return false;
+
+        if (root.rightChild == null || root.leftChild == null) return false;
+
+        boolean areSiblings = root.leftChild.value == valueOne && root.rightChild.value == valueTwo
+            || root.leftChild.value == valueTwo && root.rightChild.value == valueOne;
+
+        if (areSiblings)
+            return true;
+
+        return areSiblings(root.leftChild, valueOne, valueTwo)
+            || areSiblings(root.rightChild, valueOne, valueTwo);
      }
 }

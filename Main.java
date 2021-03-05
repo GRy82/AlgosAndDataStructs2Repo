@@ -16,7 +16,9 @@ public class Main{
         //System.out.println(binaryTree.size()); 
         //System.out.println(binaryTree.countLeaves()); 
         //System.out.println(binaryTree.treeMax()); 
-        System.out.println(binaryTree.contains(50));
+        //System.out.println(binaryTree.contains(50));
+        System.out.println(binaryTree.areSiblings(1, 9));
+        System.out.println("Hi");
     }
 
     public static void testBinaryTreeInsert(){
