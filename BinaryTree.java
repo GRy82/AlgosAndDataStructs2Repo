@@ -234,4 +234,22 @@ public class BinaryTree {
 
         return leafCount;
      }
+
+     public int treeMax(){
+        if (root == null) throw new IllegalStateException(); 
+
+        return treeMax(root, Integer.MIN_VALUE);
+     }
+
+     private int treeMax(Node root, int currentMax){
+        if (root == null) return currentMax;
+
+        if (root.value > currentMax) 
+            currentMax = root.value;
+        
+        currentMax = treeMax(root.leftChild, currentMax);
+        currentMax = treeMax(root.rightChild, currentMax);
+        
+        return currentMax;
+     }
 }

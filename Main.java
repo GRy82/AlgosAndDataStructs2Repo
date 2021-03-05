@@ -14,7 +14,8 @@ public class Main{
         //System.out.println(binaryTree.validateBinarySearchTree());
         //binaryTree.printDistanceKFromRoot(4);
         //System.out.println(binaryTree.size()); 
-        System.out.println(binaryTree.countLeaves()); 
+        //System.out.println(binaryTree.countLeaves()); 
+        System.out.println(binaryTree.treeMax()); 
     }
 
     public static void testBinaryTreeInsert(){
