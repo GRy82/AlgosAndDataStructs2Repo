@@ -1,5 +1,6 @@
+import java.util.ArrayList;
 
-public class BinaryTree{
+public class BinaryTree {
     private class Node{
         private int value;
         private Node rightChild;
@@ -177,5 +178,23 @@ public class BinaryTree{
             printDistanceKFromRoot(root.leftChild, k - 1);
             printDistanceKFromRoot(root.rightChild, k - 1);
         }
+    }
+
+    public ArrayList<Integer> getListKFromRoot(int k){
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        getListKFromRoot(root, k, list);
+        return list;
+    }
+
+    private void getListKFromRoot(Node root, int k, ArrayList<Integer> list){
+        if (root == null) return;
+
+        if(k == 0){
+            list.add(root.value);
+            return;
+        }
+
+        getListKFromRoot(root.leftChild, k - 1, list);
+        getListKFromRoot(root.rightChild, k - 1, list); 
     }
 }
