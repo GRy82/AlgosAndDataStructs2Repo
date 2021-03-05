@@ -208,6 +208,13 @@ public class BinaryTree {
     }
 
     //----------------Extra Exercises---------------------
-
+    public int size(){
+        int size = 0;
+        for(var i = 0; i <= height(); i++){
+            for(var j = 0; j < getListKFromRoot(i).size(); j++)
+                size++;
+        }
+        return size;
+     }
     
 }
