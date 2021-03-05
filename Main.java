@@ -13,7 +13,8 @@ public class Main{
         //System.out.println(binaryTree.equals(binaryTwo));
         //System.out.println(binaryTree.validateBinarySearchTree());
         //binaryTree.printDistanceKFromRoot(4);
-        System.out.println(binaryTree.size()); 
+        //System.out.println(binaryTree.size()); 
+        System.out.println(binaryTree.countLeaves()); 
     }
 
     public static void testBinaryTreeInsert(){
@@ -29,7 +30,7 @@ public class Main{
         binaryTree.insert(9);
         binaryTree.insert(1);
         binaryTree.insert(6);
-        binaryTree.insert(10);
+        binaryTree.insert(8);
         binaryTree.insert(11);
     }
 

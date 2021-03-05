@@ -216,5 +216,22 @@ public class BinaryTree {
         }
         return size;
      }
+
+     public int countLeaves(){
+        if(root == null) throw new IllegalStateException();
+
+        return countLeaves(root, 0);
+     }
     
+     private int countLeaves(Node root, int leafCount){
+        if (root == null) return leafCount;
+
+        if(root.leftChild == null && root.rightChild == null)
+            return leafCount + 1;
+        
+        leafCount = countLeaves(root.leftChild, leafCount);
+        leafCount = countLeaves(root.rightChild, leafCount);
+
+        return leafCount;
+     }
 }
