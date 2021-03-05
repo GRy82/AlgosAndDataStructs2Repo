@@ -11,7 +11,8 @@ public class Main{
         //binaryTree.traversePostOrder();
         //System.out.println(binaryTree.height());
         //System.out.println(binaryTree.equals(binaryTwo));
-        System.out.println(binaryTree.validateBinarySearchTree());
+        //System.out.println(binaryTree.validateBinarySearchTree());
+        binaryTree.printDistanceKFromRoot(3);
     }
 
     public static void testBinaryTreeInsert(){
@@ -20,15 +21,15 @@ public class Main{
         binaryTwo.insert(9);
         binaryTwo.insert(1);
         binaryTwo.insert(6);
-        binaryTwo.insert(8);
         binaryTwo.insert(10);
+        binaryTwo.insert(11);
         binaryTree.insert(7);
         binaryTree.insert(4);
         binaryTree.insert(9);
         binaryTree.insert(1);
         binaryTree.insert(6);
-        binaryTree.insert(8);
         binaryTree.insert(10);
+        binaryTree.insert(11);
     }
 
     public static void testBinaryTreeFind(){

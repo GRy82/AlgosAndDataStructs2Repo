@@ -158,4 +158,24 @@ public class BinaryTree{
         return validateBinarySearchTree(min, node.value - 1, node.leftChild)
             && validateBinarySearchTree(node.value + 1, max, node.rightChild);
     }
+
+    //--------------------------------------------
+
+    public void printDistanceKFromRoot(int k){
+        if (root == null) throw new IllegalStateException();
+
+        printDistanceKFromRoot(root, k);
+    }
+
+    private void printDistanceKFromRoot(Node root , int k){
+        if(root == null) return;
+
+        if (k == 0){
+            System.out.println(root.value);
+        }
+        else{
+            printDistanceKFromRoot(root.leftChild, k - 1);
+            printDistanceKFromRoot(root.rightChild, k - 1);
+        }
+    }
 }
