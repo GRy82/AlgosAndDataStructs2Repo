@@ -289,30 +289,21 @@ public class BinaryTree {
 
      public ArrayList<Integer> getAncestors(int descendent){
         ArrayList<Integer> ancestors = new ArrayList<>();
-        ancestors = getAncestors(ancestors, root, descendent);
+        getAncestors(ancestors, root, descendent);
         return ancestors;
      }
 
-     private ArrayList<Integer> getAncestors(ArrayList<Integer> ancestors, Node root, int descendent){
-        if (root == null) return ancestors;
+     private boolean getAncestors(ArrayList<Integer> ancestors, Node root, int descendent){
+        if (root == null) return false;
 
-        if(root.value != descendent && isDescendent(root, descendent)){
-            ancestors.add(root.value);
+        if (root.value == descendent) return true;
+
+        if (getAncestors(ancestors, root.leftChild, descendent) ||
+            getAncestors(ancestors, root.rightChild, descendent)) {
+                ancestors.add(root.value);
+                return true;
         }
 
-        getAncestors(ancestors, root.leftChild, descendent);
-        getAncestors(ancestors, root.rightChild, descendent);
-
-        return ancestors;
-     }
-
-     private boolean isDescendent(Node possibleAncestor, int descendent){
-        if(possibleAncestor == null) return false;
-
-        if(possibleAncestor.value == descendent || possibleAncestor.value == descendent)
-            return true;
-
-        return isDescendent(possibleAncestor.leftChild, descendent)
-            || isDescendent(possibleAncestor.rightChild, descendent);
-     }
+        return false;
+    }
 }
