@@ -252,4 +252,19 @@ public class BinaryTree {
         
         return currentMax;
      }
+
+     public boolean contains(int value){
+        if (root == null) throw new IllegalStateException();
+
+        return contains(root, value);
+     }
+
+     private boolean contains(Node root, int value){
+        if(root == null) return false;
+
+        if(root.value == value) return true;
+        
+        return contains(root.leftChild, value)
+            || contains(root.rightChild,value);
+     }
 }
