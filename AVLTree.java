@@ -12,28 +12,19 @@ public class AVLTree{
     private AVLNode root;
 
     public void insert(int value){
-        if (root == null) {
-            root = new AVLNode(value);
-            return;
-        }
-
-        insert(root, root, value);
+        root = insert(root, value);
     }
 
-    private void insert(AVLNode root, AVLNode previous, int value){
-        if (root == null) {
-            root = new AVLNode(value);
-            if(value > previous.value)
-                previous.rightChild = root;
-            else if(value < previous.value)
-                previous.leftChild = root;
-            return;
-        }
+    private AVLNode insert(AVLNode root,int value){
+        if (root == null) 
+            return new AVLNode(value);
 
         if (value > root.value)
-            insert(root.rightChild, root, value);
+            root.rightChild = insert(root.rightChild, value);
         
         if (value < root.value)
-            insert(root.leftChild, root, value);
+            root.leftChild = insert(root.leftChild, value);
+
+        return root;
     }
 }
