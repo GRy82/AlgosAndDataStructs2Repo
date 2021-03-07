@@ -1,10 +1,13 @@
+//import java.util.LinkedList;
 
-public class Main{
+public class Main {
     public static BinaryTree binaryTree = new BinaryTree();
     public static BinaryTree binaryTwo = new BinaryTree();
     public static BinaryTree[] trees = new BinaryTree[]{binaryTree, binaryTwo};
+    public static AVLTree avlTree = new AVLTree();
     public static void main(String[] args) {
-        testBinaryTreeInsert();
+        testAVLTreeInsert();
+        //testBinaryTreeInsert();
         //testBinaryTreeFind();
         //binaryTree.traversePreOrder();
         //binaryTree.traverseInOrder();
@@ -18,8 +21,14 @@ public class Main{
         //System.out.println(binaryTree.treeMax()); 
         //System.out.println(binaryTree.contains(50));
         //System.out.println(binaryTree.areSiblings(1, 19));
-        System.out.println(binaryTree.getAncestors(13));
-        System.out.println("Hi");
+        //System.out.println(binaryTree.getAncestors(13));
+    }
+
+    public static void testAVLTreeInsert(){
+        avlTree.insert(5);
+        avlTree.insert(8);
+        avlTree.insert(3);
+        avlTree.insert(10);
     }
 
     public static void testBinaryTreeInsert(){
