@@ -22,6 +22,8 @@ public class Main {
         //System.out.println(binaryTree.contains(50));
         //System.out.println(binaryTree.areSiblings(1, 19));
         //System.out.println(binaryTree.getAncestors(13));
+        System.out.println(binaryTree.isBalanced());
+        System.out.println(binaryTree.isPerfect());
     }
 
     public static void testAVLTreeInsert(){

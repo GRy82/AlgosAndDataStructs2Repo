@@ -293,7 +293,7 @@ public class BinaryTree {
         return ancestors;
      }
 
-     private boolean getAncestors(ArrayList<Integer> ancestors, Node root, int descendent){
+    private boolean getAncestors(ArrayList<Integer> ancestors, Node root, int descendent){
         if (root == null) return false;
 
         if (root.value == descendent) return true;
@@ -305,5 +305,23 @@ public class BinaryTree {
         }
 
         return false;
+    }
+
+    public boolean isBalanced() {
+        return isBalanced(root);
+    }
+    
+    private boolean isBalanced(Node root) {
+        if (root == null) return true;
+    
+        var balanceFactor = height(root.leftChild) - height(root.rightChild);
+    
+        return Math.abs(balanceFactor) <= 1 &&
+                isBalanced(root.leftChild) &&
+                isBalanced(root.rightChild);
+    }
+    
+    public boolean isPerfect() {
+        return size() == (Math.pow(2, height() + 1) - 1);
     }
 }
