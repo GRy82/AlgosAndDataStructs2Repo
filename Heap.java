@@ -1,5 +1,3 @@
-import javax.lang.model.util.ElementScanner14;
-
 public class Heap {
     private int capacity = 15;
     private int[] array = new int[capacity];
@@ -22,53 +20,49 @@ public class Heap {
         if(index == 0 || value < array[parentIndex])
             return;
         
-        swap(index, parentIndex, value);
+        swap(index, parentIndex);
         bubbleUp(parentIndex, value);      
     }
-
-    private void bubbleDown(int parentIndex){
-        int childIndex = getGreaterChildIndex(parentIndex);
-        if(childIndex == -1){
-            array[parentIndex] = 0;
-            shiftLeft(parentIndex);
-            return;
-        }
         
-        swap(childIndex, parentIndex, Integer.MIN_VALUE);
-        bubbleDown(childIndex);
-    }
-
-    private void shiftLeft(int emptyIndex){
-        int currentIndex = emptyIndex;
-        while(array[currentIndex + 1] != 0){
-            array[currentIndex] = array[currentIndex + 1];
-            currentIndex++;
-        }
-        array[currentIndex] = 0;
-    }
-
-    private int getGreaterChildIndex(int parentIndex){
-        int leftChildIndex = parentIndex * 2 + 1;
-        int rightChildIndex = parentIndex * 2 + 2;
-        if(leftChildIndex > count || rightChildIndex > count)
-            return leftChildIndex > count && rightChildIndex > count ? -1 : Math.min(leftChildIndex, rightChildIndex);
-        else
-            return array[rightChildIndex] >= array[leftChildIndex] ? rightChildIndex : leftChildIndex;
-    }
-        
-    private void swap(int index1, int index2, int value){
+    private void swap(int index1, int index2){
         int temp = array[index1];
-        array[index1] = value;
+        array[index1] = array[index2];
         array[index2] = temp;
     }
 
-    public void removeRoot(){
-        array[0] = Integer.MIN_VALUE;
-        bubbleDown(0);
 
-        count--;
+    public void moshRemove(){
+        if (count == 0) throw new IllegalStateException();
+
+        array[0] = array[--count];
+
+        var index = 0;
+        while(index <= count && !isValidParent(index)){
+            var largerChildIndex = (leftChild(index) > rightChild(index)) ? 
+                leftChildIndex(index) : rightChildIndex(index);
+            
+            swap(index, largerChildIndex);
+            index = largerChildIndex;
+        }
     }
 
-    //------------Mosh Remove Solution----------
-    //------------------------------------------
+    private boolean isValidParent(int index){
+        return array[index] >= leftChild(index) && array[index] >= rightChild(index);
+    }
+
+    private int leftChild(int index){
+        return array[leftChildIndex(index)];
+    }
+
+    private int rightChild(int index){
+        return array[rightChildIndex(index)];
+    }
+
+    private int leftChildIndex(int index){
+        return index * 2 + 1;
+    }
+
+    private int rightChildIndex(int index){
+        return index * 2 + 2;
+    }
 }
