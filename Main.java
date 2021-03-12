@@ -5,8 +5,10 @@ public class Main {
     public static BinaryTree binaryTwo = new BinaryTree();
     public static BinaryTree[] trees = new BinaryTree[]{binaryTree, binaryTwo};
     public static AVLTree avlTree = new AVLTree();
+    public static Heap heap = new Heap();
     public static void main(String[] args) {
-        testAVLTreeInsert();
+        testHeap();
+        //testAVLTreeInsert();
         //testBinaryTreeInsert();
         //testBinaryTreeFind();
         //binaryTree.traversePreOrder();
@@ -22,8 +24,16 @@ public class Main {
         //System.out.println(binaryTree.contains(50));
         //System.out.println(binaryTree.areSiblings(1, 19));
         //System.out.println(binaryTree.getAncestors(13));
-        System.out.println(binaryTree.isBalanced());
-        System.out.println(binaryTree.isPerfect());
+        //System.out.println(binaryTree.isBalanced());
+        //System.out.println(binaryTree.isPerfect());
+    }
+
+    public static void testHeap(){
+        heap.insert(3);
+        heap.insert(2);
+        heap.insert(4);
+        
+        System.out.println("Done");
     }
 
     public static void testAVLTreeInsert(){
