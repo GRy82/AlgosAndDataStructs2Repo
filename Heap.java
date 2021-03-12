@@ -31,31 +31,63 @@ public class Heap {
     }
 
 
-    public void moshRemove(){
+    public int moshRemove(){
         if (count == 0) throw new IllegalStateException();
-
+        
+        var root = array[0];
         array[0] = array[--count];
+        bubbleDown();
 
+        return root;
+    }
+    
+    private void bubbleDown(){
         var index = 0;
         while(index <= count && !isValidParent(index)){
-            var largerChildIndex = (leftChild(index) > rightChild(index)) ? 
-                leftChildIndex(index) : rightChildIndex(index);
+            int largerChildIndex = largerChildIndex(index);
             
             swap(index, largerChildIndex);
             index = largerChildIndex;
         }
     }
 
+    private int largerChildIndex(int index){
+        if(!hasLeftChild(index))
+            return index;
+
+        if(!hasRightChild(index))
+            return leftChild(index);
+
+        return (leftChild(index) > rightChild(index)) ? 
+            leftChildIndex(index) : rightChildIndex(index);
+    }
+
     private boolean isValidParent(int index){
-        return array[index] >= leftChild(index) && array[index] >= rightChild(index);
+        if(!hasLeftChild(index))
+            return true;
+
+        var isValid = array[index] >= leftChild(index);
+
+        if(hasRightChild(index))
+            isValid &= array[index] >= rightChild(index);
+
+        return isValid;
     }
 
     private int leftChild(int index){
         return array[leftChildIndex(index)];
     }
 
+    private boolean hasLeftChild(int index){
+        return leftChild(index) <= count;
+    }
+
     private int rightChild(int index){
         return array[rightChildIndex(index)];
+    }
+
+    private boolean hasRightChild(int index){
+        return rightChild(index) <= count;
     }
 
     private int leftChildIndex(int index){

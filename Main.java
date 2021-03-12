@@ -35,7 +35,7 @@ public class Main {
         heap.insert(3);
         heap.insert(2);
         heap.insert(1);
-        heap.removeRoot();
+        heap.moshRemove();
         
         System.out.println("Done");
     }
