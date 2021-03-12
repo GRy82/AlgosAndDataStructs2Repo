@@ -29,9 +29,13 @@ public class Main {
     }
 
     public static void testHeap(){
+        heap.insert(6);
+        heap.insert(5);
+        heap.insert(4);
         heap.insert(3);
         heap.insert(2);
-        heap.insert(4);
+        heap.insert(1);
+        heap.removeRoot();
         
         System.out.println("Done");
     }
