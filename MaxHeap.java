@@ -1,6 +1,7 @@
 public class MaxHeap {
     public static void heapify(int[] numbers){
-        for (int i = 0; i < numbers.length; i++)
+        int lastParentIndex = numbers.length / 2 - 1;
+        for (int i = lastParentIndex; i >= 0; i--)
             heapify(numbers, i);
     }
 
