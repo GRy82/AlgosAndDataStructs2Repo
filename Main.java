@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 //import java.util.LinkedList;
 
 public class Main {
@@ -7,7 +9,10 @@ public class Main {
     public static AVLTree avlTree = new AVLTree();
     public static Heap heap = new Heap();
     public static void main(String[] args) {
-        testHeap();
+        int[] numbers = { 5, 4, 9, 7, 6, 8 };
+        int[] descendingOrder = sortArrayWithHeap(numbers);
+        System.out.println(Arrays.toString(descendingOrder));
+        //testHeap();
         //testAVLTreeInsert();
         //testBinaryTreeInsert();
         //testBinaryTreeFind();
@@ -69,5 +74,16 @@ public class Main {
         System.out.println(binaryTree.Find(1));
         System.out.println(binaryTree.Find(7));
         System.out.println(binaryTree.Find(5));
+    }
+
+    public static int[] sortArrayWithHeap(int[] numbers){
+        Heap heap = new Heap();
+        for (var number : numbers)
+            heap.insert(number);
+
+        for (int i = 0; i < numbers.length; i++)
+            numbers[i] = heap.moshRemove();
+
+        return numbers; 
     }
 }
