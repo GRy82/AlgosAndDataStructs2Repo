@@ -28,4 +28,6 @@ public class MaxHeap {
         numbers[firstIndex] = numbers[secondIndex];
         numbers[secondIndex] = temp;
     }
+
 }
+
