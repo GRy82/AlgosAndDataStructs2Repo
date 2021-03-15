@@ -14,6 +14,10 @@ public class Heap {
     public boolean isFull(){
         return count == capacity;
     }
+
+    public boolean isEmpty(){
+        return count == 0;
+    }
     
     private void bubbleUp(int index, int value){
         int parentIndex = index % 2 == 0 ? (index - 2) / 2 : (index - 1) / 2;
