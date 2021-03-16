@@ -61,10 +61,10 @@ public class Trie {
     }
 
     private void traverse(Node root){
-        System.out.println(root.value);
-
         for(var child : root.getChildren())
             traverse(child);
+
+        System.out.println(root.value);
     }
 
 }
