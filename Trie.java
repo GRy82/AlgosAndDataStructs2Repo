@@ -167,4 +167,20 @@ public class Trie {
 
         return count;
     }
+
+    public int countWordsMosh() {
+        return countWordsMosh(root);
+    }
+    
+    private int countWordsMosh(Node root) {
+        var total = 0;
+    
+        if (root.endOfWord)
+          total++;
+    
+        for (var child : root.getChildren())
+          total += countWordsMosh(child);
+    
+        return total;
+    }
 }
