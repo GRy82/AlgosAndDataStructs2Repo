@@ -47,7 +47,7 @@ public class Trie {
     public void insert(String word){
         Node current = root;
         for(var ch : word.toCharArray()){
-            if(current.hasChild(ch))
+            if(!current.hasChild(ch))
                 current.addChild(ch);
             current = current.getChild(ch);
         }
@@ -127,5 +127,28 @@ public class Trie {
             current = child;
         }
         return current;
+    }
+
+    public boolean containsRecursive(String word) {
+        if (word == null)
+            return false;
+    
+        return containsRecursive(root, word, 0);
+    }
+    
+    private boolean containsRecursive(Node root, String word, int index) {
+        // Base condition
+        if (index == word.length())
+            return root.endOfWord;
+    
+        if (root == null)
+            return false;
+    
+        var ch = word.charAt(index);
+        var child = root.getChild(ch);
+        if (child == null)
+            return false;
+    
+        return containsRecursive(child, word, index + 1);
     }
 }

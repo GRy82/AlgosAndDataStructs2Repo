@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 //import java.util.LinkedList;
 
 public class Main {
@@ -9,9 +7,10 @@ public class Main {
     public static AVLTree avlTree = new AVLTree();
     public static Heap heap = new Heap();
     public static void main(String[] args) {
-        int[] numbers = { 5, 4, 9, 7, 6, 8 };
-        int[] descendingOrder = sortArrayWithHeap(numbers);
-        System.out.println(Arrays.toString(descendingOrder));
+        testTrieContainsRecursive();
+        //int[] numbers = { 5, 4, 9, 7, 6, 8 };
+        //int[] descendingOrder = sortArrayWithHeap(numbers);
+        //System.out.println(Arrays.toString(descendingOrder));
         //testHeap();
         //testAVLTreeInsert();
         //testBinaryTreeInsert();
@@ -31,6 +30,20 @@ public class Main {
         //System.out.println(binaryTree.getAncestors(13));
         //System.out.println(binaryTree.isBalanced());
         //System.out.println(binaryTree.isPerfect());
+    }
+
+    public static void testTrieContainsRecursive(){
+        Trie trie = new Trie();
+        trie.insert("ball");
+        trie.insert("balloon");
+        trie.insert("hi");
+        System.out.println(trie.containsRecursive("bal"));
+        System.out.println(trie.containsRecursive("hi"));
+        System.out.println(trie.containsRecursive("his"));
+        System.out.println(trie.containsRecursive("balloon"));
+        System.out.println(trie.containsRecursive("balloons"));
+        System.out.println(trie.containsRecursive(""));
+        System.out.println(trie.containsRecursive(null));
     }
 
     public static void testHeap(){
