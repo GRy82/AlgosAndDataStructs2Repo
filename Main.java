@@ -7,7 +7,8 @@ public class Main {
     public static AVLTree avlTree = new AVLTree();
     public static Heap heap = new Heap();
     public static void main(String[] args) {
-        testTrieContainsRecursive();
+        testTrieCountWords();
+        //testTrieContainsRecursive();
         //int[] numbers = { 5, 4, 9, 7, 6, 8 };
         //int[] descendingOrder = sortArrayWithHeap(numbers);
         //System.out.println(Arrays.toString(descendingOrder));
@@ -44,6 +45,16 @@ public class Main {
         System.out.println(trie.containsRecursive("balloons"));
         System.out.println(trie.containsRecursive(""));
         System.out.println(trie.containsRecursive(null));
+    }
+
+    public static void testTrieCountWords(){
+        Trie trie = new Trie();
+        trie.insert("ball");
+        trie.insert("balloon");
+        trie.insert("hi");
+        trie.insert("his");
+        trie.insert("brother");
+        System.out.println(trie.countWords());
     }
 
     public static void testHeap(){

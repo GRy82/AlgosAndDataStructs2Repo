@@ -151,4 +151,20 @@ public class Trie {
     
         return containsRecursive(child, word, index + 1);
     }
+
+    public int countWords(){
+        return countWords(root, 0);
+    }
+
+    private int countWords(Node node, int count){
+        if(node == null) return count;
+
+        if (node.endOfWord)
+            count++;
+
+        for(var key : node.children.keySet())
+            count = countWords(node.getChild(key), count);
+
+        return count;
+    }
 }
