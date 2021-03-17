@@ -1,12 +1,14 @@
 //import java.util.LinkedList;
 
 public class Main {
+    public static Trie trie = new Trie();
     public static BinaryTree binaryTree = new BinaryTree();
     public static BinaryTree binaryTwo = new BinaryTree();
     public static BinaryTree[] trees = new BinaryTree[]{binaryTree, binaryTwo};
     public static AVLTree avlTree = new AVLTree();
     public static Heap heap = new Heap();
     public static void main(String[] args) {
+        constructTestTrie();
         testTrieCountWords();
         //testTrieContainsRecursive();
         //int[] numbers = { 5, 4, 9, 7, 6, 8 };
@@ -33,11 +35,13 @@ public class Main {
         //System.out.println(binaryTree.isPerfect());
     }
 
-    public static void testTrieContainsRecursive(){
-        Trie trie = new Trie();
+    public static void constructTestTrie(){
         trie.insert("ball");
         trie.insert("balloon");
         trie.insert("hi");
+    }
+
+    public static void testTrieContainsRecursive(){
         System.out.println(trie.containsRecursive("bal"));
         System.out.println(trie.containsRecursive("hi"));
         System.out.println(trie.containsRecursive("his"));
@@ -48,12 +52,6 @@ public class Main {
     }
 
     public static void testTrieCountWords(){
-        Trie trie = new Trie();
-        trie.insert("ball");
-        trie.insert("balloon");
-        trie.insert("hi");
-        trie.insert("his");
-        trie.insert("brother");
         System.out.println(trie.countWords());
     }
 
