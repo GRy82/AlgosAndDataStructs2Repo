@@ -39,6 +39,26 @@ public class Graph {
         connections.get(fromEntity).add(toEntity);
     }
 
+    public void removeEntity(String label){
+        var entity = entities.get(label);
+        if(entity == null) return;
+
+        for(var n : connections.keySet())
+            connections.get(n).remove(entity);
+
+        connections.remove(entity);
+        entities.remove(entity.label);
+    }
+
+    public void removeEdge(String from, String to){
+        var fromEntity = entities.get(from);
+        var toEntity = entities.get(to);
+        
+        if(fromEntity == null || toEntity == null) return;
+
+        connections.get(fromEntity).remove(toEntity);
+    }
+
     public void print(){
         for (var source : connections.keySet()){
             var targets = connections.get(source);
