@@ -1,7 +1,11 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
+import jdk.internal.jshell.tool.ConsoleIOContext.FixResult;
 
 public class Graph {
 
@@ -64,6 +68,23 @@ public class Graph {
             var targets = connections.get(source);
             if(!targets.isEmpty())
                 System.out.println(source + " is connected to " + targets);
+        }
+    }
+
+    public void depthFirstTraversal(String root){
+        if(entities.get(root) == null) return;
+
+        depthFirstTraversal(entities.get(root), new HashSet<>());
+    }
+
+    private void depthFirstTraversal(Node currentEntity, Set<Node> visitedNodes){
+        System.out.println(currentEntity);
+        visitedNodes.add(currentEntity);
+
+        for (var neighbor : connections.get(currentEntity)){
+            if(!visitedNodes.contains(neighbor)){
+                depthFirstTraversal(neighbor, visitedNodes);
+            }
         }
     }
 }   
