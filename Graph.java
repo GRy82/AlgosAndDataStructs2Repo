@@ -11,6 +11,11 @@ public class Graph {
         public Node(String label){
             this.label = label;
         }
+
+        @Override
+        public String toString(){
+            return label;
+        }
     }
 
     private Map<String, Node> entities = new HashMap<>();
@@ -32,5 +37,13 @@ public class Graph {
             throw new IllegalArgumentException();
 
         connections.get(fromEntity).add(toEntity);
+    }
+
+    public void print(){
+        for (var source : connections.keySet()){
+            var targets = connections.get(source);
+            if(!targets.isEmpty())
+                System.out.println(source + " is connected to " + targets);
+        }
     }
 }   
