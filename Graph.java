@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Stack;
 
 import jdk.internal.jshell.tool.ConsoleIOContext.FixResult;
 
@@ -72,9 +73,10 @@ public class Graph {
     }
 
     public void depthFirstTraversal(String root){
-        if(entities.get(root) == null) return;
+        Node current = entities.get(root);
+        if(current == null) return;
 
-        depthFirstTraversal(entities.get(root), new HashSet<>());
+        depthFirstTraversal(current, new HashSet<>());
     }
 
     private void depthFirstTraversal(Node currentEntity, Set<Node> visitedNodes){
@@ -85,6 +87,27 @@ public class Graph {
             if(!visitedNodes.contains(neighbor)){
                 depthFirstTraversal(neighbor, visitedNodes);
             }
+        }
+    }
+    //Same purpose as above, but implemented using iteration, not recursion.
+    public void traverseDepthFirst(String root){
+        Node current = entities.get(root);
+        if(current == null) return;
+
+        Set<Node> visited = new HashSet<>();
+        Stack<Node> stack = new Stack<>(); 
+        stack.push(current);
+
+        while(!stack.isEmpty()){
+            current = stack.pop();
+            
+            if(visited.contains(current))
+                continue;
+
+            System.out.println(current);
+            visited.add(current);
+            for(var neighbor : connections.get(current))
+                stack.push(neighbor);
         }
     }
 }   
