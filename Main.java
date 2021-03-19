@@ -1,6 +1,9 @@
+import java.util.List;
+
 //import java.util.LinkedList;
 
 public class Main {
+    public static Graph graph = new Graph();
     public static Trie trie = new Trie();
     public static BinaryTree binaryTree = new BinaryTree();
     public static BinaryTree binaryTwo = new BinaryTree();
@@ -8,8 +11,9 @@ public class Main {
     public static AVLTree avlTree = new AVLTree();
     public static Heap heap = new Heap();
     public static void main(String[] args) {
+        testTopologicalSort();
         constructTestTrie();
-        testTrieCountWords();
+        //testTrieCountWords();
         //testTrieContainsRecursive();
         //int[] numbers = { 5, 4, 9, 7, 6, 8 };
         //int[] descendingOrder = sortArrayWithHeap(numbers);
@@ -33,6 +37,19 @@ public class Main {
         //System.out.println(binaryTree.getAncestors(13));
         //System.out.println(binaryTree.isBalanced());
         //System.out.println(binaryTree.isPerfect());
+    }
+
+    public static void testTopologicalSort(){
+        graph.addNode("X");
+        graph.addNode("A");
+        graph.addNode("B");
+        graph.addNode("P");
+        graph.addEdge("X", "A");
+        graph.addEdge("X", "B");
+        graph.addEdge("B", "P");
+        graph.addEdge("A", "P");
+        List<String> labels = graph.topologicalSort();
+        System.out.println(labels);
     }
 
     public static void constructTestTrie(){

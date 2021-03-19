@@ -132,6 +132,34 @@ public class Graph {
                 if(!nodeQueue.contains(connect))
                     nodeQueue.add(connect);
         }
-
     }   
+
+    public List<String> topologicalSort(){
+        Stack<Node> stack = new Stack<>();
+        List<String> sortedLabels = new ArrayList<>();
+        Set<Node> visited = new HashSet<>();
+
+        for(var node : entities.values())
+            topologicalSort(node, stack, visited);
+
+        while(!stack.isEmpty())
+            sortedLabels.add(stack.pop().label);
+
+        return sortedLabels;
+    }
+
+    private void topologicalSort(Node node, Stack<Node> stack, Set<Node> visited){
+        var connects = connections.get(node);
+
+        if(!connects.isEmpty())
+            for(var connection : connects)
+                topologicalSort(connection, stack, visited);
+
+        if(!visited.contains(node)){
+            visited.add(node);
+            stack.push(node);
+        }
+
+        return;
+    }
 }   
