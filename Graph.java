@@ -1,12 +1,12 @@
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
-
-import jdk.internal.jshell.tool.ConsoleIOContext.FixResult;
 
 public class Graph {
 
@@ -15,7 +15,7 @@ public class Graph {
 
         public Node(String label){
             this.label = label;
-        }
+        } 
 
         @Override
         public String toString(){
@@ -110,4 +110,28 @@ public class Graph {
                 stack.push(neighbor);
         }
     }
+
+    public void traverseBreadthFirst(String root){
+        var rootNode = entities.get(root);
+        if(rootNode == null) return;
+
+        Queue<Node> nodeQueue = new ArrayDeque<>();
+        Set<Node> visited = new HashSet<>();
+
+        nodeQueue.add(rootNode);
+        
+        while(!nodeQueue.isEmpty()){
+            var current = nodeQueue.remove();
+            if (visited.contains(current))
+                continue;
+            
+            System.out.println(current);
+            visited.add(current);
+
+            for(var connect : connections.get(current))
+                if(!nodeQueue.contains(connect))
+                    nodeQueue.add(connect);
+        }
+
+    }   
 }   
