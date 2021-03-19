@@ -11,6 +11,7 @@ public class Main {
     public static AVLTree avlTree = new AVLTree();
     public static Heap heap = new Heap();
     public static void main(String[] args) {
+        testGraphHasCycle();
         testTopologicalSort();
         constructTestTrie();
         //testTrieCountWords();
@@ -37,6 +38,18 @@ public class Main {
         //System.out.println(binaryTree.getAncestors(13));
         //System.out.println(binaryTree.isBalanced());
         //System.out.println(binaryTree.isPerfect());
+    }
+
+    public static void testGraphHasCycle(){
+        graph.addNode("A");
+        graph.addNode("B");
+        graph.addNode("C");
+        graph.addNode("D");
+        graph.addEdge("A", "B");
+        graph.addEdge("B", "C");
+        graph.addEdge("C", "A");
+        graph.addEdge("D", "A");
+        System.out.println(graph.hasCycle());
     }
 
     public static void testTopologicalSort(){

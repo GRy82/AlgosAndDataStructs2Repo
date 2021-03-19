@@ -158,4 +158,40 @@ public class Graph {
 
         stack.push(node);
     }
+
+    public boolean hasCycle(){
+        Set<Node> all = new HashSet<>();
+        all.addAll(entities.values());
+        Set<Node> visiting = new HashSet<>();
+        Set<Node> visited = new HashSet<>();
+
+        while(!all.isEmpty()){
+            var current = all.iterator().next();
+            if(hasCycle(current, all, visited, visiting))
+                return true;
+        }
+
+        return false;
+    }
+
+    private boolean hasCycle(Node node, Set<Node> all, Set<Node> visited, Set<Node> visiting){
+        all.remove(node);    
+        visiting.add(node);
+        
+        for (var connect : connections.get(node)){
+            if(visited.contains(connect))
+                continue;
+
+            if(visiting.contains(connect))
+                return true;
+
+            if(hasCycle(connect, all, visited, visiting))
+                return true; 
+        }
+
+        visiting.remove(node);
+        visited.add(node);
+
+        return false;
+    }
 }   
