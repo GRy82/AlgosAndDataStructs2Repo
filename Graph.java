@@ -149,17 +149,13 @@ public class Graph {
     }
 
     private void topologicalSort(Node node, Stack<Node> stack, Set<Node> visited){
-        var connects = connections.get(node);
+        if(visited.contains(node)) return;
 
-        if(!connects.isEmpty())
-            for(var connection : connects)
-                topologicalSort(connection, stack, visited);
+        visited.add(node);
+        
+        for(var connection : connections.get(node))
+            topologicalSort(connection, stack, visited);
 
-        if(!visited.contains(node)){
-            visited.add(node);
-            stack.push(node);
-        }
-
-        return;
+        stack.push(node);
     }
 }   
