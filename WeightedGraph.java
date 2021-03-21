@@ -40,6 +40,16 @@ public class WeightedGraph {
         edgesList.putIfAbsent(node, new ArrayList<>());
         
     }
+    
+    public void addEdge(String from, String to, int weight){
+        if(!entities.keySet().contains(from) || !entities.keySet().contains(to))
+            throw new IllegalArgumentException();
 
+        var fromEntity = entities.get(from);
+        var toEntity = entities.get(to);
+
+        edgesList.get(fromEntity).add(new Edge(fromEntity, toEntity, weight));
+        edgesList.get(toEntity).add(new Edge(toEntity, fromEntity, weight));
+    }
    
 }
