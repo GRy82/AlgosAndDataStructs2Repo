@@ -34,5 +34,12 @@ public class WeightedGraph {
          }
     }
 
+    public void addNode(String label){
+        var node = new Node(label);
+        entities.putIfAbsent(label, node);
+        edgesList.putIfAbsent(node, new ArrayList<>());
+        
+    }
+
    
 }
