@@ -3,6 +3,7 @@ import java.util.List;
 //import java.util.LinkedList;
 
 public class Main {
+    public static WeightedGraph weightedGraph = new WeightedGraph();
     public static Graph graph = new Graph();
     public static Trie trie = new Trie();
     public static BinaryTree binaryTree = new BinaryTree();
@@ -11,6 +12,7 @@ public class Main {
     public static AVLTree avlTree = new AVLTree();
     public static Heap heap = new Heap();
     public static void main(String[] args) {
+        testWeightGraphClass();
         testGraphHasCycle();
         testTopologicalSort();
         constructTestTrie();
@@ -38,6 +40,14 @@ public class Main {
         //System.out.println(binaryTree.getAncestors(13));
         //System.out.println(binaryTree.isBalanced());
         //System.out.println(binaryTree.isPerfect());
+    }
+
+    public void testWeightGraphClass(){
+        weightedGraph.addNode("A");
+        weightedGraph.addNode("B");
+        weightedGraph.addNode("C");
+        weightedGraph.addEdge("A", "B", 5);
+        weightedGraph.addEdge("A", "C", 5);
     }
 
     public static void testGraphHasCycle(){
