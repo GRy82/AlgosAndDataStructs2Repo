@@ -42,12 +42,13 @@ public class Main {
         //System.out.println(binaryTree.isPerfect());
     }
 
-    public void testWeightGraphClass(){
+    public static void testWeightGraphClass(){
         weightedGraph.addNode("A");
         weightedGraph.addNode("B");
         weightedGraph.addNode("C");
         weightedGraph.addEdge("A", "B", 5);
         weightedGraph.addEdge("A", "C", 5);
+        weightedGraph.print();
     }
 
     public static void testGraphHasCycle(){

@@ -1,10 +1,16 @@
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 
 public class WeightedGraph {
     private Map<String, Node> entities = new HashMap<>();
+
+    private Map<Node, Integer> distances = new HashMap<>();
+    private Map<Node, Node> previousNodes = new HashMap<>();
 
     private class Node{
         private String label;
@@ -19,6 +25,10 @@ public class WeightedGraph {
 
         public void addEdge(Node to, int weight){
             edgesList.add(new Edge(this, to, weight));
+        }
+
+        public List<Edge> getEdges(){
+            return edgesList;
         }
     }
     private class Edge{
@@ -52,5 +62,14 @@ public class WeightedGraph {
         fromEntity.addEdge(toEntity, weight);
         toEntity.addEdge(fromEntity, weight);
     }
-   
+
+    public void print(){
+        for(var node: entities.values()){
+            var edges = node.getEdges();
+            if(!edges.isEmpty())
+                System.out.println(node + " is connected to " + edges);
+        }
+    }
+
+    
 }
