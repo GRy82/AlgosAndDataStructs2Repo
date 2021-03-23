@@ -1,4 +1,3 @@
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -7,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
+import java.util.Stack;
 
 public class WeightedGraph {
     private Map<String, Node> entities = new HashMap<>();
@@ -80,12 +80,20 @@ public class WeightedGraph {
         }
     }
 
-    public int getShortestDistance(String from, String to){
+
+    public Path getShortestPath(String from, String to){
+        if(!entities.containsKey(from) || !entities.containsKey(to))
+            throw new IllegalArgumentException();
+
         var fromNode = entities.get(from);
+        var toNode = entities.get(to);
+
         Map<Node, Integer> distances = new HashMap<>();
         for(var node : entities.values())
             distances.put(node, Integer.MAX_VALUE);
         distances.replace(fromNode, 0);
+
+        Map<Node, Node> previousNodes = new HashMap<>();
 
         Set<Node> visited = new HashSet<>();
 
@@ -103,10 +111,28 @@ public class WeightedGraph {
                 var newDistance = distances.get(currentNode) + edge.weight;
                 if (newDistance < distances.get(edge.to)){
                     distances.replace(edge.to, newDistance);
+                    previousNodes.put(edge.to, currentNode);
                     queue.add(new NodeEntry(edge.to, newDistance));
                 }
             }
         }
-        return distances.get(entities.get(to));
+
+        return buildPath(toNode, fromNode, previousNodes);
+    }
+
+    private Path buildPath(Node toNode, Node fromNode, Map<Node, Node> previousNodes){
+        Stack<Node> stack = new Stack<>();
+        var current = toNode;
+        stack.add(current);
+        while(current != fromNode){
+            current = previousNodes.get(current);
+            stack.add(current);
+        }
+        
+        Path path = new Path();
+        while(!stack.isEmpty())
+            path.add(stack.pop().label);
+
+        return path;
     }
 }
