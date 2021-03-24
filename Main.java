@@ -12,6 +12,7 @@ public class Main {
     public static AVLTree avlTree = new AVLTree();
     public static Heap heap = new Heap();
     public static void main(String[] args) {
+        testPrimsAlgorithm();
         testShortestPath();
         testWeightGraphClass();
         testGraphHasCycle();
@@ -41,6 +42,20 @@ public class Main {
         //System.out.println(binaryTree.getAncestors(13));
         //System.out.println(binaryTree.isBalanced());
         //System.out.println(binaryTree.isPerfect());
+    }
+
+    public static void testPrimsAlgorithm(){
+        weightedGraph.addNode("A");
+        weightedGraph.addNode("B");
+        weightedGraph.addNode("C");
+        weightedGraph.addNode("D");
+        weightedGraph.addEdge("A", "B", 3);
+        weightedGraph.addEdge("B", "D", 4);
+        weightedGraph.addEdge("C", "D", 5);
+        weightedGraph.addEdge("A", "C", 1);
+        weightedGraph.addEdge("B", "C", 2);
+        var spanningTree = weightedGraph.primsAlgorithm();
+        spanningTree.print();
     }
 
     public static void testShortestPath(){

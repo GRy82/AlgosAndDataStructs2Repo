@@ -161,4 +161,36 @@ public class WeightedGraph {
 
             return false;
     }
+
+    public WeightedGraph primsAlgorithm(){
+        WeightedGraph spanningTree = new WeightedGraph();
+        if(entities.isEmpty()) return spanningTree;
+
+        PriorityQueue<Edge> edges = new PriorityQueue<>(
+            Comparator.comparingInt(e -> e.weight)
+        );
+        var firstArbitraryNode = entities.values().iterator().next();
+        edges.addAll(firstArbitraryNode.getEdges()); 
+        spanningTree.addNode(firstArbitraryNode.label);
+
+        if(edges.isEmpty()) return spanningTree;
+        
+        while(entities.size() > spanningTree.entities.size()){
+            var smallestEdge = edges.remove();
+            var newNode = smallestEdge.to;
+
+            if(spanningTree.entities.containsKey(newNode.label))
+                continue;
+
+            spanningTree.addNode(newNode.label);
+            spanningTree.addEdge(smallestEdge.from.label, 
+                newNode.label, smallestEdge.weight);
+
+            for(var edge : newNode.getEdges())
+                if(!spanningTree.entities.containsKey(edge.to.label))
+                    edges.add(edge);
+        }
+
+        return spanningTree;
+    }
 }
